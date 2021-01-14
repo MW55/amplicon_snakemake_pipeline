@@ -59,7 +59,21 @@ blast:
 
 # Classify
 classify:
-        classify: FALSE  # Boolean to indicate whether to use Mothur classify seqs.
-        db_path: database/pr2/pr2.db # Path to the database file against which the search should be carried out, at the moment only the PRS2 (database/pr2/pr2.db) database will be automatically downloaded, other databases have to be downloaded and configurated manually.
-        dnamol: 16S # Not used yet
-        cutoff: 80 # Cutoff of bootstrap value for taxonomic assignment.
+        classify: FALSE #Boolean to indicate whether to use Mothur classify.seqs.
+        db_path: database/pr2/pr2db #Path to the database file against which the classify.seqs should be carried out.
+        database: PR2 #Database against which the search should be carried out, at the moment "PR2", "SILVA", "RDP" and "Unite" are supported.
+        dnamol: 18S #Which PR2 database to use, 18S = protists 18S, 16S = protist plastids 16S.
+        pr2_version: 4.12.0 
+        silva_version: 138
+        method: wang #Which method to use with classify.seqs.
+        ksize: 8 #Size (length) of k-mer used in the Wang classify method.
+        iters: 100 #How many iterations to do when calculating the bootstrap confidence score for your taxonomy.
+        cutoff: 90 #Cutoff of bootstrap value for taxonomic assignment.
+        probs: TRUE #Boolean to indicate whether the bootstrap values should be included in the taxonomy output of classify.
+        search: blast #Which search algorithm to use with the knn method.
+        numwanted: 1 #Number of nearest neighbors (most similar sequences) used to determine the consensus taxonomy with the knn method.
+        gapopen: -5 #Punishment for creating gap, used in blast search method within classify.seqs.
+        gapextend: -1 #Punishment for extending gap, used in blast search method within classify.seqs.
+        relabund: false #Boolean to indicate whether the summary files should be relative abundances rather than raw abundances.
+        output: detail #Format of the tax.summary file from classify.seqs.
+        printlevel: -1 #Specify how many taxonomic levels you want printed to your tax.summary file. Default -1 means max level
